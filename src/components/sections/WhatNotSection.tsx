@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { X } from 'lucide-react'
 import { Container } from '../shared/Container'
 import { SectionHeading } from '../shared/SectionHeading'
+import { FloatingOrbs } from '../shared/FloatingOrbs'
 import { siteContent } from '../../data/content'
 
 export function WhatNotSection() {
@@ -10,8 +11,10 @@ export function WhatNotSection() {
   return (
     <section
       id={whatNot.id}
-      className="bg-gradient-to-b from-ocean-900 to-ocean-950 py-20 md:py-28"
+      className="relative bg-gradient-to-b from-ocean-900 to-ocean-950 py-20 pb-10 md:py-28 md:pb-12"
     >
+      <FloatingOrbs count={3} />
+
       <Container>
         <SectionHeading
           heading={whatNot.heading}
@@ -22,13 +25,14 @@ export function WhatNotSection() {
           {whatNot.items.map((item, i) => (
             <motion.div
               key={item.title}
-              className="flex items-start gap-4 rounded-xl border border-red-500/20 bg-red-500/5 p-6 backdrop-blur-sm"
+              className="group flex items-start gap-4 rounded-xl border border-red-500/20 bg-red-500/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-red-500/30 hover:bg-red-500/10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, margin: '-50px' }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
+              whileHover={{ y: -3 }}
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-500/20">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-500/20 transition-colors duration-300 group-hover:bg-red-500/30">
                 <X size={20} className="text-red-400" />
               </div>
               <div>

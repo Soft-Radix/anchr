@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Container } from '../shared/Container'
 import { SectionHeading } from '../shared/SectionHeading'
+import { FloatingOrbs } from '../shared/FloatingOrbs'
 import { siteContent } from '../../data/content'
 
 function WordByWordReveal({ text }: { text: string }) {
@@ -11,7 +12,7 @@ function WordByWordReveal({ text }: { text: string }) {
       className="text-center font-display text-2xl font-bold text-ocean-300 sm:text-3xl lg:text-4xl"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: false }}
     >
       {words.map((word, i) => (
         <motion.span
@@ -42,12 +43,14 @@ export function StatusSection() {
   return (
     <section
       id={status.id}
-      className="relative bg-ocean-950 py-20 md:py-28"
+      className="relative bg-ocean-950 pt-10 pb-20 md:pt-12 md:pb-28"
       style={{
         backgroundImage:
           'radial-gradient(circle at 50% 50%, rgba(26, 107, 181, 0.12) 0%, transparent 60%)',
       }}
     >
+      <FloatingOrbs count={3} />
+
       <Container narrow>
         <SectionHeading
           heading={status.heading}
@@ -61,7 +64,7 @@ export function StatusSection() {
               className="text-center text-base leading-relaxed text-ocean-200/80"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, margin: '-50px' }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
             >
               {p}
@@ -74,15 +77,15 @@ export function StatusSection() {
           <WordByWordReveal text={status.cta} />
         </div>
 
-        {/* Decorative anchor */}
+        {/* Decorative line */}
         <motion.div
           className="mt-12 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 1.5 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="h-px w-24 bg-gradient-to-r from-transparent via-ocean-500 to-transparent" />
+          <div className="h-px w-24 animate-pulse-glow bg-gradient-to-r from-transparent via-ocean-500 to-transparent" />
         </motion.div>
       </Container>
     </section>

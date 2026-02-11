@@ -19,7 +19,7 @@ export function SectionHeading({
       className={cn('mb-12 text-center md:mb-16', className)}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: false, margin: '-50px' }}
       transition={{ duration: 0.6 }}
     >
       <h2
@@ -43,7 +43,7 @@ export function SectionHeading({
       <div
         className={cn(
           'mx-auto mt-6 h-1 w-16 rounded-full',
-          light ? 'bg-ocean-500' : 'bg-ocean-400'
+          light ? 'bg-ocean-500 animate-pulse-slow' : 'bg-ocean-400 animate-pulse-slow'
         )}
       />
     </motion.div>

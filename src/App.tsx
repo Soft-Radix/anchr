@@ -31,7 +31,6 @@ function App() {
         <SourcesSection />
         <WaveBackground fromColor="#ffffff" toColor="#193d63" flip />
         <WhatNotSection />
-        <WaveBackground fromColor="#0a1628" toColor="#0a1628" />
         <StatusSection />
       </main>
       <Footer />

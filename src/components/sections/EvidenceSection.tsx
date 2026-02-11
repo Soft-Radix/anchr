@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Container } from '../shared/Container'
 import { SectionHeading } from '../shared/SectionHeading'
 import { TimelineItem } from '../shared/TimelineItem'
+import { FloatingOrbs } from '../shared/FloatingOrbs'
 import { siteContent } from '../../data/content'
 
 export function EvidenceSection() {
@@ -10,8 +11,10 @@ export function EvidenceSection() {
   return (
     <section
       id={evidence.id}
-      className="bg-ocean-900 py-20 md:py-28"
+      className="relative bg-ocean-900 py-20 md:py-28"
     >
+      <FloatingOrbs count={3} />
+
       <Container>
         <SectionHeading
           heading={evidence.heading}
@@ -22,7 +25,7 @@ export function EvidenceSection() {
           className="mx-auto mb-12 max-w-2xl text-center text-base leading-relaxed text-ocean-200/80"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, margin: '-50px' }}
           transition={{ duration: 0.5 }}
         >
           {evidence.intro}

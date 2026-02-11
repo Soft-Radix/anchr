@@ -17,12 +17,28 @@
   --color-ocean-950: #0a1628;
 
   --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float-slow 8s ease-in-out infinite;
+  --animate-float-reverse: float-reverse 7s ease-in-out infinite;
   --animate-wave: wave 8s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+  --animate-gradient-shift: gradient-shift 8s ease infinite;
+  --animate-drift: drift 20s linear infinite;
+  --animate-spin-slow: spin 30s linear infinite;
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+
+  @keyframes float-reverse {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(10px) rotate(-1deg); }
   }
 
   @keyframes wave {
@@ -30,6 +46,25 @@
     25% { transform: translateX(-5px) translateY(-3px); }
     50% { transform: translateX(0) translateY(-5px); }
     75% { transform: translateX(5px) translateY(-3px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes drift {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(30px, -20px); }
+    50% { transform: translate(-10px, 15px); }
+    75% { transform: translate(-30px, -10px); }
+    100% { transform: translate(0, 0); }
   }
 }
 

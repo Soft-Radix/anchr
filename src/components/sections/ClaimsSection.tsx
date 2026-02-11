@@ -2,16 +2,17 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Container } from '../shared/Container'
 import { SectionHeading } from '../shared/SectionHeading'
+import { ParallaxImage } from '../shared/ParallaxImage'
 import { siteContent } from '../../data/content'
 
 function ChainDiagram() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: false, margin: '-100px' })
 
   const steps = siteContent.claims.steps
 
   return (
-    <div ref={ref} className="relative mx-auto max-w-md">
+    <div ref={ref} className="relative">
       {/* Vertical connecting line with draw animation */}
       <svg
         className="absolute left-6 top-0 h-full w-1"
@@ -40,11 +41,11 @@ function ChainDiagram() {
             className="relative flex items-start gap-5 pl-0"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, margin: '-50px' }}
             transition={{ duration: 0.5, delay: i * 0.15 }}
           >
             {/* Node */}
-            <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-ocean-500 bg-ocean-50">
+            <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-ocean-500 bg-ocean-50 transition-shadow duration-300 hover:shadow-[0_0_15px_rgba(77,168,218,0.4)]">
               <span className="font-display text-lg font-bold text-ocean-700">
                 {i + 1}
               </span>
@@ -86,7 +87,7 @@ export function ClaimsSection() {
               className="text-center text-base leading-relaxed text-ocean-800/80"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, margin: '-50px' }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               {p}
@@ -94,7 +95,25 @@ export function ClaimsSection() {
           ))}
         </div>
 
-        <ChainDiagram />
+        {/* Two-column: chain diagram + image */}
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <ChainDiagram />
+
+          {/* Image with parallax */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <ParallaxImage
+              src="/images/how-claims.jpg"
+              alt="Reviewing and documenting claims"
+              className="h-[320px] sm:h-[400px] lg:h-[460px]"
+              overlayClassName="from-ocean-100/40 via-transparent to-ocean-50/20"
+            />
+          </motion.div>
+        </div>
       </Container>
     </section>
   )

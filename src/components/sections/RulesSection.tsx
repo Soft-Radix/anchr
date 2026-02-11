@@ -1,13 +1,16 @@
 import { Container } from '../shared/Container'
 import { SectionHeading } from '../shared/SectionHeading'
 import { RuleCard } from '../shared/RuleCard'
+import { FloatingOrbs } from '../shared/FloatingOrbs'
 import { siteContent } from '../../data/content'
 
 export function RulesSection() {
   const { rules } = siteContent
 
   return (
-    <section id={rules.id} className="bg-ocean-800 py-20 md:py-28">
+    <section id={rules.id} className="relative bg-ocean-800 py-20 md:py-28">
+      <FloatingOrbs count={4} />
+
       <Container>
         <SectionHeading heading={rules.heading} subtitle={rules.subtitle} />
 

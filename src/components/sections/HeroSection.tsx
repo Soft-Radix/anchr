@@ -8,12 +8,23 @@ export function HeroSection() {
   const { hero } = siteContent
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-ocean-950 via-ocean-900 to-ocean-950">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      {/* Animated gradient background */}
+      <div
+        className="absolute inset-0 animate-gradient-shift"
+        style={{
+          background: 'linear-gradient(270deg, #0a1628, #193d63, #0a1628, #174876)',
+          backgroundSize: '400% 400%',
+        }}
+      />
+
       <ParticleField />
 
-      {/* Radial glow */}
+      {/* Radial glow - pulsing */}
       <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ocean-600/10 blur-[120px]" />
+        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 animate-pulse-glow rounded-full bg-ocean-600/15 blur-[120px]" />
+        <div className="absolute left-1/4 top-1/3 h-[300px] w-[300px] animate-drift rounded-full bg-ocean-400/10 blur-[100px]" />
+        <div className="absolute right-1/4 bottom-1/3 h-[250px] w-[250px] animate-float-slow rounded-full bg-ocean-500/8 blur-[80px]" />
       </div>
 
       <div className="relative z-10 flex flex-col items-center px-4 text-center">
@@ -25,7 +36,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <div className="animate-float">
-            <AnchorIcon size={80} className="text-ocean-400/80" />
+            <AnchorIcon size={80} className="text-ocean-400/80 drop-shadow-[0_0_20px_rgba(77,168,218,0.3)]" />
           </div>
         </motion.div>
 
